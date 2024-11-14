@@ -298,7 +298,7 @@ class TransactionContextPooled(TransactionContext):
             try:
                 await self.connection._parent._pool.release(self.connection._connection)
             except:
-                print("Prevented KeyError again...")
+                print(f"Prevented KeyError again (pool size: {self.connection._parent._pool.size})...")
                 pass
         connections.reset(self.token)
 
